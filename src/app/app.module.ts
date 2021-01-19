@@ -1,18 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { NgxIndexedDBModule } from 'ngx-indexed-db'
+import { FormsModule } from '@angular/forms'
+import AppRoutingModule from './app-routing.module'
+import AppComponent from './app.component'
+import MemoryCardsModule from './modules/memory-cards/memory-cards.module'
+import dbConfig from './configs/db'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    NgxIndexedDBModule.forRoot(dbConfig),
+    AppRoutingModule,
+    MemoryCardsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export default class AppModule {
+}

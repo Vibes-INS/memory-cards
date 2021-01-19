@@ -1,0 +1,40 @@
+<main class="layout">
+
+  <div class="title-container">
+    <h2 class="title">Memory Cards</h2>
+
+    <button class="icon-button setting" (click)="goToSetting()">
+      <i class="fa fa-cog" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <!-- start button or restart button -->
+  <div *ngIf="!startTime" [class.restart]="isRestart" (click)="start()" class="start aero">
+    {{ isRestart ? 'RESTART' : 'START' }}
+  </div>
+
+  <!-- last time -->
+  <div class="last-time">
+    <ng-container *ngIf="lastTime">Last time: {{ lastTime / 1000}}s</ng-container>
+  </div>
+
+  <!-- game main -->
+  <div class="cards">
+    <div
+      *ngFor="let item of items"
+      class="card question-mask"
+      [class.active]="item === currentItem"
+      [class.opened]="item.opened"
+      [class.hide]="system.isHideCardContent"
+      (click)="clickItem(item)"
+    >
+      <div class="text" *ngIf="item.type === 'TEXT'">
+        {{ item.content }}
+      </div>
+
+      <div class="img" *ngIf="item.type === 'IMAGE'">
+        <img [src]="item.content" alt="image">
+      </div>
+    </div>
+  </div>
+</main>

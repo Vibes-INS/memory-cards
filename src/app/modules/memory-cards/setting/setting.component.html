@@ -1,0 +1,69 @@
+<div class="layout">
+  <nav class="nav aero">
+    <button class="icon-button back" (click)="back()">
+      <i class="fa fa-arrow-left"></i>
+    </button>
+
+    <div class="text">
+      Setting
+    </div>
+  </nav>
+
+  <ul class="list">
+    <li class="item">
+      <i class="icon fa" [class.fa-eye-slash]="system.isHideCardContent" [class.fa-eye]="!system.isHideCardContent"></i>
+      Hide card contents
+
+      <div class="item-options">
+        <app-checkbox [(checked)]="system.isHideCardContent" (change)="saveSystem()"></app-checkbox>
+      </div>
+    </li>
+
+    <li class="item">
+      <i class="icon fa fa-list-ol"></i>
+      Set card count
+
+      <div class="item-options">
+        <app-select [(value)]="system.cardCount" [options]="cardCountOptions" (change)="saveSystem()"></app-select>
+      </div>
+    </li>
+
+    <li>
+      <div class="item">
+        <i class="icon fa fa-edit"></i>
+        Edit card contents
+
+        <div class="item-options">
+          <button class="icon-button" (click)="addCardToTop()">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <ul class="list">
+        <li *ngFor="let card of cards" [class.disable]="card.disable" class="card">
+          <button class="icon-button close" (click)="delCard(card)">
+            <i class="fa fa-close"></i>
+          </button>
+
+          <div class="item" [class.img]="item.type === 'IMAGE'"  *ngFor="let item of card.items">
+
+            <app-select [(value)]="item.type" [options]="cardContentTypeOptions"></app-select>
+            <input *ngIf="item.type === 'TEXT'" class="text" type="text" [(ngModel)]="item.content" (blur)="saveCard(card)">
+            <img
+              *ngIf="item.type !== 'TEXT'"
+              class="image"
+              alt="Click to upload picture"
+              [src]="item.content"
+              (click)="uploadFile(item, { card: card })"
+            >
+          </div>
+        </li>
+      </ul>
+    </li>
+
+    <li class="item clickable" (click)="clearCache()">
+      <i class="icon fa fa-trash"></i>
+      Clear cache and Quit
+    </li>
+  </ul>
+</div>

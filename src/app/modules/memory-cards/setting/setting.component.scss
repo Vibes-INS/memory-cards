@@ -1,0 +1,104 @@
+.layout {
+  padding: 0 0 env(safe-area-inset-bottom);
+  position: relative;
+}
+
+.nav {
+  display: flex;
+  justify-content: start;
+  line-height: 48px;
+  height: 48px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 0 10px;
+
+  .text {
+    font-size: 20px;
+    font-weight: bold;
+    margin: auto;
+  }
+}
+
+.nav .back {
+  position: absolute;
+  left: 10px;
+  top: 8px;
+}
+
+.list {
+  padding: 0;
+}
+
+.list .item {
+  list-style: none;
+  display: flex;
+  --height: 50px;
+  line-height: var(--height);
+  min-height: var(--height);
+  padding: 0 15px;
+
+  &.clickable:active {
+    background-color: var(--core-color-1);
+  }
+}
+
+.list .item .icon {
+  line-height: var(--height);
+  margin-right: 10px;
+  width: 15px;
+}
+
+.list .item .item-options {
+  margin-left: auto;
+  display: flex;
+}
+
+.list .card {
+  width: 95%;
+  border-radius: 5px;
+  background-color: var(--card-color);
+  box-shadow: 0 3px 0 var(--card-shadow-color);
+  margin: 10px auto;
+  overflow: hidden;
+  position: relative;
+
+  &.disable {
+    opacity: 0.6;
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 5px;
+  }
+
+  .item {
+    padding: 0;
+    --height: 30px;
+  }
+  .item.img {
+    --height: 100px;
+    overflow: hidden;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 14px;
+    color: var(--font-color);
+  }
+
+  .text {
+    width: 100%;
+  }
+
+  .image {
+    width: auto;
+    height: 100%;
+    max-height: var(--height);
+    margin: auto 0;
+  }
+}
+

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "word-adventure": {
+    "memory-cards": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/word-adventure",
+            "outputPath": "dist/memory-cards",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
           },
@@ -66,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "word-adventure:build"
+            "browserTarget": "memory-cards:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "word-adventure:build:production"
+              "browserTarget": "memory-cards:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "word-adventure:build"
+            "browserTarget": "memory-cards:build"
           }
         },
         "test": {
@@ -92,7 +93,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
           }
@@ -114,15 +116,23 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "word-adventure:serve"
+            "devServerTarget": "memory-cards:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "word-adventure:serve:production"
+              "devServerTarget": "memory-cards:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "word-adventure"
+    }
+  },
+  "defaultProject": "memory-cards",
+  "cli": {
+    "analytics": "cffd0617-28fe-466a-b679-3c1823b2868c"
+  }
 }
